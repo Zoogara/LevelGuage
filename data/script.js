@@ -79,16 +79,23 @@ function onClose(event) {
 
 // Validate form data before sending to server
 function wsSubmitForm() {
+    if (document.forms["calibration"]["zeroAngles"].checked)  {
+        confirmationMessage = "Warning: Before clicking OK, ensure device is firmly mounted to a" +
+            " known level surface.  Displayed angles will be zeroed to their current values.";
+    } else {
+        confirmationMessage = "Click OK to change roll and pitch zones and wheelbase." +
+            " Displayed angles will not be zeroed.";
+    }
     // Display warning message - because we will zero the angles to their current settings
-    if (confirm("Warning: Before clicking OK, ensure device is firmly mounted to a" +
-                " known level surface.  Displayed angles will be zeroed to their current values.")) {
-        // build JSON string of deviation and wheelbase.  If the user didn't change them they still
-        // will be sent but obviously ony the zero adjust will take place.
+    if (confirm(confirmationMessage)) {
+        // build JSON string of deviation, wheelbase and zro angle flag  
         calibration = '{"rollDeviation":"' + document.forms["calibration"]["rollDeviation"].value +
             '","pitchDeviation":"' + document.forms["calibration"]["pitchDeviation"].value +
-            '","wheelbase":"' +  document.forms["calibration"]["wheelbase"].value + '"}';
+            '","wheelbase":"' +  document.forms["calibration"]["wheelbase"].value + 
+            '","zeroAngles":"' + document.forms["calibration"]["zeroAngles"].checked + '"}';
         // send to server
         websocket.send(calibration);
+        document.getElementById("zero").checked = false;
     } else {
         // We clicked Cancel
         alert("No calibration done");
