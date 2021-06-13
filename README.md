@@ -5,3 +5,5 @@ As supplied it includes files and configuration to perform as a level guage for 
 
 Basic circuit for testing:
 https://www.circuito.io/static/reply/index.html?solutionId=60c05f86b0ba3a00308cdf74&solutionPath=storage.circuito.io
+
+See wiki for documentation.
