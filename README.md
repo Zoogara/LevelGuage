@@ -40,6 +40,6 @@ See the wiki for documentation: https://github.com/darylsargent/LevelGuage/wiki/
 * Make zeroing the roll and pitch angles optional via check box on web form
 * Add Raise and Lower values for draw bar / jockey wheel and add associated calibration field (distance from axle to jockey wheel) to web form
 
-### Future changes
+### Future changes:
 
 * Audible tones on level condition
