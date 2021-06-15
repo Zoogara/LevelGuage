@@ -18,16 +18,16 @@ The SPIFFS partition scheme used for this app is: No OTA (2MB APP / 2MB SPIFFS)
 
 The libraries used in this app are:
 
-  Adafruit MPU6050 by Adafruit
-  Arduino_JSON by Arduino
-  ESPmDNS by Hristo Gochkov
+  * Adafruit MPU6050 by Adafruit
+  * Arduino_JSON by Arduino
+  * ESPmDNS by Hristo Gochkov
   
 These libraries should be available in the Arduino repository.
 
 Other libraries used are:
 
-  ESPAsyncWebServer by me-no-dev https://github.com/me-no-dev/ESPAsyncWebServer
-  AsyncTCP by me-no-dev https://github.com/me-no-dev/AsyncTCP
+  * ESPAsyncWebServer by me-no-dev https://github.com/me-no-dev/ESPAsyncWebServer
+  * AsyncTCP by me-no-dev https://github.com/me-no-dev/AsyncTCP
   
 Random Nerd Tutorials has a good example of installing and using these libraries to server web pages from SPIFFS: https://randomnerdtutorials.com/esp32-web-server-spiffs-spi-flash-file-system/
   
