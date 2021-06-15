@@ -31,5 +31,15 @@ Other libraries used are:
   
 Random Nerd Tutorials has a good example of installing and using these libraries to serve web pages from SPIFFS: https://randomnerdtutorials.com/esp32-web-server-spiffs-spi-flash-file-system/
   
+### Documentation
 
-See wiki for documentation.
+See the wiki for documentation: https://github.com/darylsargent/LevelGuage/wiki/LevelGuage-Documentation
+
+### Upcoming changes in next version:
+
+* Make zeroing the roll and pitch angles optional via check box on web form
+* Add Raise and Lower values for draw bar / jockey wheel and add associated calibration field (distance from axle to jockey wheel) to web form
+
+### Future changes
+
+* Audible tones on level condition
