@@ -29,7 +29,7 @@ Other libraries used are:
   * ESPAsyncWebServer by me-no-dev https://github.com/me-no-dev/ESPAsyncWebServer
   * AsyncTCP by me-no-dev https://github.com/me-no-dev/AsyncTCP
   
-Random Nerd Tutorials has a good example of installing and using these libraries to server web pages from SPIFFS: https://randomnerdtutorials.com/esp32-web-server-spiffs-spi-flash-file-system/
+Random Nerd Tutorials has a good example of installing and using these libraries to serve web pages from SPIFFS: https://randomnerdtutorials.com/esp32-web-server-spiffs-spi-flash-file-system/
   
 
 See wiki for documentation.
