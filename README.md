@@ -33,7 +33,7 @@ Random Nerd Tutorials has a good example of installing and using these libraries
   
 ### Documentation
 
-See the wiki for documentation: https://github.com/darylsargent/LevelGuage/wiki/LevelGuage-Documentation
+See the wiki for documentation: https://github.com/darylsargent/LevelGuage/wiki/
 
 ### Upcoming changes in next version:
 
