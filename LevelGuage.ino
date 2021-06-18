@@ -37,6 +37,7 @@ String rollValue = "0";
 String pitchValue = "0";
 String rollAdjust, pitchAdjust, rollDeviation, pitchDeviation, wheelbase, drawbar, temp;
 
+
 // Read claibration values from files
 void readCalibration() {
   File calibrationFile = SPIFFS.open("/calibration.json", "r");
@@ -59,7 +60,7 @@ void readCalibration() {
   rollAdjust = calibration["rollAdjust"];
   pitchAdjust = calibration["pitchAdjust"];
   wheelbase = calibration["wheelbase"];
-  drawbar = calibration["drawbar"];
+  drawbar = calibration["drawbar"];\
   // close file
   calibrationFile.close();
  }
@@ -149,6 +150,7 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
       calibration["pitchDeviation"] = temp;
       temp = calibrationUpdate["wheelbase"];
       calibration["wheelbase"] = temp; 
+
       temp = calibrationUpdate["drawbar"];
       calibration["drawbar"] = temp; 
       // Set adjustment figures to current roll and pitch value i.e. 
