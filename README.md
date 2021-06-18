@@ -1,7 +1,7 @@
 # LevelGuage
 Software framework for universal level gauge based on ESP32 and MPU6050 with web based front-end.
 
-![Interface](https://www.dropbox.com/s/crtm2t1ajzf0lm2/ExampleTilt.jpg?raw=1)
+![Interface](https://www.dropbox.com/s/y6bet9axlc7e0zn/ExampleLevel_1_1.jpg?raw=1)
 
 As supplied it includes files and configuration to perform as a level guage for a caravan - but feel free to apply to any other purpose.
 
@@ -34,11 +34,6 @@ Random Nerd Tutorials has a good example of installing and using these libraries
 ### Documentation
 
 See the wiki for documentation: https://github.com/darylsargent/LevelGuage/wiki/
-
-### Upcoming changes in next version:
-
-* Make zeroing the roll and pitch angles optional via check box on web form
-* Add Raise and Lower values for draw bar / jockey wheel and add associated calibration field (distance from axle to jockey wheel) to web form
 
 ### Future changes:
 

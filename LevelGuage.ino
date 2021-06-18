@@ -35,7 +35,8 @@ JSONVar calibrationUpdate;
 String message = "";
 String rollValue = "0";
 String pitchValue = "0";
-String rollAdjust, pitchAdjust, rollDeviation, pitchDeviation, wheelbase, temp;
+String rollAdjust, pitchAdjust, rollDeviation, pitchDeviation, wheelbase, drawbar, temp;
+
 
 // Read claibration values from files
 void readCalibration() {
@@ -59,6 +60,7 @@ void readCalibration() {
   rollAdjust = calibration["rollAdjust"];
   pitchAdjust = calibration["pitchAdjust"];
   wheelbase = calibration["wheelbase"];
+  drawbar = calibration["drawbar"];\
   // close file
   calibrationFile.close();
  }
@@ -83,6 +85,7 @@ String setAngleValues(){
   angleValues["rollDeviation"] = rollDeviation;
   angleValues["pitchDeviation"] = pitchDeviation;
   angleValues["wheelbase"] = wheelbase;  
+  angleValues["drawbar"] = drawbar;
   String jsonString = JSON.stringify(angleValues);
   return jsonString;
 }
@@ -147,12 +150,18 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
       calibration["pitchDeviation"] = temp;
       temp = calibrationUpdate["wheelbase"];
       calibration["wheelbase"] = temp; 
+
+      temp = calibrationUpdate["drawbar"];
+      calibration["drawbar"] = temp; 
       // Set adjustment figures to current roll and pitch value i.e. 
-      // those values will now return zero.
-      sensors_event_t a, g, temp;
-      mpu.getEvent(&a, &g, &temp);
-      calibration["rollAdjust"] = String(atan2(a.acceleration.y, a.acceleration.z) * 180.0 / PI);
-      calibration["pitchAdjust"] = String(atan2(-a.acceleration.x, sqrt(a.acceleration.y * a.acceleration.y + a.acceleration.z *a.acceleration.z)) *180.0 / PI);
+      // those values will now return zero, if zero angles flag set
+      temp = calibrationUpdate["zeroAngles"];
+      if (temp=="true") {
+        sensors_event_t a, g, t;
+        mpu.getEvent(&a, &g, &t);
+        calibration["rollAdjust"] = String(atan2(a.acceleration.y, a.acceleration.z) * 180.0 / PI);
+        calibration["pitchAdjust"] = String(atan2(-a.acceleration.x, sqrt(a.acceleration.y * a.acceleration.y + a.acceleration.z *a.acceleration.z)) *180.0 / PI);
+      }
       // Save calibration data to file
       writeCalibration();
       // Update values to new ones
@@ -161,6 +170,7 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
       rollAdjust = calibration["rollAdjust"];
       pitchAdjust = calibration["pitchAdjust"];
       wheelbase = calibration["wheelbase"];
+      drawbar = calibration["drawbar"];
     }
   }
 }
@@ -287,10 +297,10 @@ void setup(void) {
 
   // On startup we get the values of the sensors just so we can
   // print them to the console
-  sensors_event_t a, g, temp;
-  mpu.getEvent(&a, &g, &temp);
+  sensors_event_t a, g, t;
+  mpu.getEvent(&a, &g, &t);
   Serial.print("Temperature: ");
-  Serial.print(temp.temperature);
+  Serial.print(t.temperature);
   Serial.println(" degC");
 
   Serial.println(""); 

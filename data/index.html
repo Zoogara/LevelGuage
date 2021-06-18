@@ -23,9 +23,11 @@
         </div>
         <div class="calibration-form">
             <form name="calibration">
-                Roll level zone: <input type="number" id= "rollD" name="rollDeviation" step=".1" min="0" required> 
-                Pitch level zone: <input type="number" id="pitchD" name="pitchDeviation" step=".1" min="0" required> 
-                Wheelbase: <input type="number" id="wbase" name="wheelbase" required>
+                Roll level zone: <input type="number" id="rollD" name="rollDeviation" step=".1" min="0" required> 
+                Pitch level zone: <input type="number" id="pitchD" name="pitchDeviation" step=".1" min="0" required><br>
+                Wheelbase: <input type="number" id="wbase" name="wheelbase" required> 
+                Drawbar: <input type="number" id="dbar" name="drawbar" required> <br>
+                Zero Angles: <input type="checkbox" id="zero" name="zeroAngles"> 
                 <input type="button" value="Calibrate" onclick="return wsSubmitForm()">
             </form>
         </div>
