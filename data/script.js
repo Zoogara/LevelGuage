@@ -16,10 +16,12 @@ var imageBack=document.createElement("img");
 var rollDeviation = 0;
 var pitchDeviation = 0; 
 var wheelbase = 2000;
+var drawbar = 4000;
 var calibration;
 var rollValue = "0";
 var pitchValue = "0";
 var heightAdjust = "0";
+var jockeyAdjust = "0";
 
 // On page load resize canvas objects to fit cards in grid
 imageSide.onload=function(){
@@ -79,19 +81,21 @@ function onClose(event) {
 
 // Validate form data before sending to server
 function wsSubmitForm() {
+    // Display warning message - because we will zero the angles to their current settings if 
+    // box checked else just change the other values if not
     if (document.forms["calibration"]["zeroAngles"].checked)  {
         confirmationMessage = "Warning: Before clicking OK, ensure device is firmly mounted to a" +
             " known level surface.  Displayed angles will be zeroed to their current values.";
     } else {
-        confirmationMessage = "Click OK to change roll and pitch zones and wheelbase." +
+        confirmationMessage = "Click OK to change roll and pitch zones, drawbar and wheelbase lengths." +
             " Displayed angles will not be zeroed.";
     }
-    // Display warning message - because we will zero the angles to their current settings
     if (confirm(confirmationMessage)) {
-        // build JSON string of deviation, wheelbase and zro angle flag  
+        // build JSON string of deviation, wheelbase and zero angle flag  
         calibration = '{"rollDeviation":"' + document.forms["calibration"]["rollDeviation"].value +
             '","pitchDeviation":"' + document.forms["calibration"]["pitchDeviation"].value +
             '","wheelbase":"' +  document.forms["calibration"]["wheelbase"].value + 
+            '","drawbar":"' + document.forms["calibration"]["drawbar"].value +
             '","zeroAngles":"' + document.forms["calibration"]["zeroAngles"].checked + '"}';
         // send to server
         websocket.send(calibration);
@@ -127,9 +131,14 @@ function onMessage(event) {
     drawRollRotated(-parseFloat(myObj.rollValue));
     // Populate form values if they have changed
     // extract previous calibration data from JSON
+    // also update them on the form
     if (wheelbase !== myObj.wheelbase) {
         wheelbase = myObj.wheelbase;
         document.getElementById("wbase").value = wheelbase;
+    }
+    if (drawbar !== myObj.drawbar) {
+        drawbar = myObj.drawbar;
+        document.getElementById("dbar").value = drawbar;
     }
     if (rollDeviation !== myObj.rollDeviation) {
         rollDeviation = myObj.rollDeviation;
@@ -140,12 +149,18 @@ function onMessage(event) {
         document.getElementById("pitchD").value = pitchDeviation;
     }
     // Height adjustment calc
-    x = wheelbase * 2 * Math.sin(myObj.rollValue/2*Math.PI/180);
-    x = x * Math.sin((180-myObj.rollValue)/2*Math.PI/180);
+    x = wheelbase * Math.sin(myObj.rollValue*Math.PI/180);
     if (x < 0) {
         heightAdjust =  "Raise right " +  Math.round(Math.abs(x)) + " cm";
     } else {
         heightAdjust = "Raise left " +  Math.round(Math.abs(x)) + " cm";
+    }
+    // Jockey wheel height adjustment calc
+    x = drawbar * Math.sin(myObj.pitchValue*Math.PI/180);
+    if (x < 0) {
+        jockeyAdjust = "Raise " +  Math.round(Math.abs(x)) + " cm";
+    } else {
+        jockeyAdjust = "Lower " +  Math.round(Math.abs(x)) + " cm";
     }
 }
 
@@ -164,7 +179,10 @@ function drawPitchRotated(degrees){
     pctx.fillRect(0,0,pcanvas.width,pcanvas.height);
     pctx.font = pcanvas.width/16 + "px Arial";
     pctx.fillStyle="darkblue";
+    // Angle
     pctx.fillText(pitchValue,pcanvas.width/2,pcanvas.height*0.1);
+    // Height adjustment
+    pctx.fillText(jockeyAdjust,pcanvas.width/2,pcanvas.height*0.95);
     pctx.save();
     // Set origin of canvas to centre of image because rotate 
     // method rotates around origin, normally top left
