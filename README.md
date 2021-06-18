@@ -4,7 +4,7 @@ Software framework for universal level gauge based on ESP32 and MPU6050 with web
 ![Interface](# LevelGuage
 Software framework for universal level gauge based on ESP32 and MPU6050 with web based front-end.
 
-![Interface](https://www.dropbox.com/s/vy3zhv6l74a0ix7/ExampleLevel.jpg?raw=1)
+![Interface](https://www.dropbox.com/s/y6bet9axlc7e0zn/ExampleLevel_1_1.jpg?raw=1)
 
 As supplied it includes files and configuration to perform as a level guage for a caravan - but feel free to apply to any other purpose.
 
