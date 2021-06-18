@@ -1,5 +1,7 @@
 # LevelGuage
-Software framework for universal level gauge based on ESP32 and MPU6050 with web based front-end.
+A software framework for universal level gauge based on ESP32 and MPU6050 with web based front-end.
+
+[Documentation](https://github.com/Zoogara/LevelGuage/wiki/LevelGuage-Documentation)
 
 ![Interface](https://www.dropbox.com/s/y6bet9axlc7e0zn/ExampleLevel_1_1.jpg?raw=1)
 
