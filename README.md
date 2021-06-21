@@ -1,7 +1,7 @@
 # LevelGuage
 A software framework for universal level gauge based on ESP32 and MPU6050 with web based front-end.
 
-Follow the links for [documentation](https://github.com/Zoogara/LevelGuage/wiki/LevelGuage-Documentation) and [build instructions](https://github.com/Zoogara/LevelGuage/wiki/Build-Log-for-$AU70-version-($AU40-without-battery)---coming-soon)
+Follow these links for [documentation](https://github.com/Zoogara/LevelGuage/wiki/LevelGuage-Documentation) and [build instructions](https://github.com/Zoogara/LevelGuage/wiki/Build-Log-for-$AU70-version-($AU40-without-battery)---coming-soon)
 
 ![Interface](https://www.dropbox.com/s/y6bet9axlc7e0zn/ExampleLevel_1_1.jpg?raw=1)
 
