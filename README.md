@@ -1,4 +1,7 @@
 # LevelGuage
+
+NOTE: Some software ./ hardware providers are blocking wesockets on no-secure connections.  Samsung Internet browser is one example.  The workaround is to use another browser (Chrome) which currently doesn't do this.  Longer term I plan on implementing https and a root certificate with long expity.
+
 A software framework for universal level gauge based on ESP32 and MPU6050 with web based front-end.
 
 Follow these links for [documentation](https://github.com/Zoogara/LevelGuage/wiki/LevelGuage-Documentation) and [build instructions](https://github.com/Zoogara/LevelGuage/wiki/Build-Log-for-$AU70-version-($AU40-without-battery)---coming-soon)
