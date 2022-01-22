@@ -1,6 +1,6 @@
 # LevelGuage
 
-NOTE: Some software / hardware providers are blocking wesockets on no-secure connections.  Samsung Internet browser is one example.  The workaround is to use another browser (Chrome) which currently doesn't do this.  Longer term I plan on implementing https and a root certificate with long expity.
+NOTE: Some software / hardware providers are blocking wesockets on non-secure connections.  Samsung Internet browser is one example.  The workaround is to use another browser (Chrome) which currently doesn't do this.  Longer term I plan on implementing https and a root certificate with long expiry.
 
 A software framework for universal level gauge based on ESP32 and MPU6050 with web based front-end.
 
