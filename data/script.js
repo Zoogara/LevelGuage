@@ -12,7 +12,7 @@ var rctx=rcanvas.getContext("2d");
 var imageSide=document.createElement("img");
 var imageBack=document.createElement("img");
 
-// Calibration and calculation objects
+// Calibration and calculation objects - note these are updated by websocket events thus values here are not used.
 var rollDeviation = 0;
 var pitchDeviation = 0; 
 var wheelbase = 2000;
